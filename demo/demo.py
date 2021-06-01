@@ -36,7 +36,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-model = load('model.joblib')
+model = load('demo/model.joblib')
 
 punct_list = '["#$%&\'()*+,-./:;<=>@[\]^_`{|}~’‘´`\']'
 nlp = spacy.load('de_core_news_sm')
@@ -71,18 +71,18 @@ if X_test:
 
     st.markdown(f'<p class="font-2">{s}</p>', unsafe_allow_html=True)
 
-top = pd.read_csv('top.csv')
+top = pd.read_csv('demo/top.csv')
 
 if st.checkbox('Show top-20 collocations for positive and negative reviews'):
     top
 
 if st.checkbox('Show visual analysis of brands'):
     for i in ['Price_dist_brand.png', 'Rate_dist_brands.png', 'review_dist.png']:
-        image = Image.open(i)
+        image = Image.open(f'demo/{i}')
         st.image(image)
 
 if st.checkbox('Show the comparison between rates of Apple and Samsung'):
-    image = Image.open('samsung_apple.png')
+    image = Image.open('demo/samsung_apple.png')
     st.image(image)
     s = 'Using Mann-Whitney\'s Test, we can establish that rates of user satisfaction are rather different for Apple and Samsung.'
     st.markdown(f'<p class="font-3">{s}</p>', unsafe_allow_html=True)
